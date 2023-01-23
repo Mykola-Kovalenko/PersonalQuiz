@@ -8,6 +8,7 @@
 import UIKit
 
 class QuestionsViewController: UIViewController {
+    @IBOutlet var questionLabel: UILabel!
     
     @IBOutlet var singleStackView: UIStackView!
     @IBOutlet var singleButtons: [UIButton]!
@@ -20,14 +21,12 @@ class QuestionsViewController: UIViewController {
     @IBOutlet var rangeStackView: UIStackView!
     @IBOutlet var rangeSlider: UISlider!
     
-    @IBOutlet var questionLabel: UILabel!
-    
     @IBOutlet var progressView: UIProgressView!
     
     private let questions = Question.getQuestion()
-    private var quetionIndex = 0
+    private var questionIndex = 0
     private var currentAnswers: [Answer] {
-        questions[quetionIndex].answers
+        questions[questionIndex].answers
     }
     
     
@@ -60,20 +59,20 @@ extension QuestionsViewController {
             stackView?.isHidden = true
         }
         // Get curent quetion
-        let currentQuestion = questions[quetionIndex]
+        let currentQuestion = questions[questionIndex]
         
         // Set current quetion for question label
         questionLabel.text = currentQuestion.title
         
         //  Calculate progress
         
-        let totalProgress = Float(quetionIndex) / Float(questions.count)
+        let totalProgress = Float(questionIndex) / Float(questions.count)
         
         // Set progress for question progress view
         progressView.setProgress(totalProgress, animated: true)
         
         //Set navigation title
-        title = " Вопрос №\(quetionIndex + 1 ) из \(questions.count)"
+        title = "Вопрос №\(questionIndex + 1 ) из \(questions.count)"
         
         showCurrentAnswers(for: currentQuestion.type)
     }
@@ -92,8 +91,8 @@ extension QuestionsViewController {
     private func showSingleStackView(with answers: [Answer]) {
         singleStackView.isHidden = false
         
-        for (button, answers) in zip(singleButtons, answers) {
-            button.setTitle(answers.title, for: .normal)
+        for (button, answer) in zip(singleButtons, answers) {
+            button.setTitle(answer.title, for: .normal)
             
         }
         

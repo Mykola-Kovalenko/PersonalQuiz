@@ -48,7 +48,7 @@ extension Question {
     
     static func getQuestion() -> [Question] {
         [
-            Question (
+            Question(
                 title: "Какую пищу Вы предпочитаете?",
                 type: .single,
                 answers: [
