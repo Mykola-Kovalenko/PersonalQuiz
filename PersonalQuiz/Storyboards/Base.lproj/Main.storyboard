@@ -9,10 +9,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Questions View Controller-->
+        <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="QuestionsViewController" customModule="PersonalQuiz" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -192,7 +192,7 @@
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title="Ответить"/>
                                         <connections>
-                                            <action selector="multipleButtonActionPressed:" destination="8Fl-Hj-gxU" eventType="touchUpInside" id="Njp-NI-HIQ"/>
+                                            <action selector="multipleButtonAnswerPressed:" destination="8Fl-Hj-gxU" eventType="touchUpInside" id="hZT-Lu-Hwn"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -268,13 +268,7 @@
                             <constraint firstItem="9Z9-IL-FLg" firstAttribute="leading" secondItem="U6F-Cu-FKK" secondAttribute="leading" constant="20" id="zrI-J4-BgH"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Вопрос №" id="DJy-TZ-2DK">
-                        <barButtonItem key="rightBarButtonItem" title="3 +" id="aC0-QK-FwV">
-                            <connections>
-                                <segue destination="Jka-MP-0IV" kind="show" id="lEQ-PF-Cva"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Вопрос №" id="DJy-TZ-2DK"/>
                     <connections>
                         <outlet property="multipleStackView" destination="9Z9-IL-FLg" id="GyO-jB-GbY"/>
                         <outlet property="progressView" destination="EfC-hG-3ra" id="FRm-NL-vj2"/>
@@ -312,16 +306,16 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="pqW-C1-BKM">
-                                <rect key="frame" x="20" y="361.66666666666669" width="353" height="129"/>
+                                <rect key="frame" x="20" y="382" width="353" height="88.333333333333314"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" Вы - 🐶" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TGd-9a-fqr">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" Вы - 🐶" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TGd-9a-fqr">
                                         <rect key="frame" x="91" y="0.0" width="171" height="60"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="50"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="вам нравиться быть с длюдьми, вы окружаете себя людьми, которые вам нравьяться и всегда готовы помочь" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VO5-ap-sf0">
-                                        <rect key="frame" x="22.333333333333343" y="68" width="308.66666666666663" height="61"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="answer" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VO5-ap-sf0">
+                                        <rect key="frame" x="149.33333333333334" y="68" width="54.666666666666657" height="20.333333333333329"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -338,8 +332,16 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Результаты" id="VCE-mb-5Ff">
-                        <barButtonItem key="rightBarButtonItem" title="Done" id="BYx-5m-vNx"/>
+                        <barButtonItem key="rightBarButtonItem" title="Done" id="BYx-5m-vNx">
+                            <connections>
+                                <action selector="doneButtonPressed:" destination="Jka-MP-0IV" id="bdS-bx-abX"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="explanations" destination="VO5-ap-sf0" id="izp-ES-Xb5"/>
+                        <outlet property="presonalIdentifcator" destination="TGd-9a-fqr" id="9vC-uf-o4v"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="a4L-G6-vJu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -364,9 +366,6 @@
             <point key="canvasLocation" x="-535" y="-2"/>
         </scene>
     </scenes>
-    <inferredMetricsTieBreakers>
-        <segue reference="HfH-pW-KVU"/>
-    </inferredMetricsTieBreakers>
     <resources>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
